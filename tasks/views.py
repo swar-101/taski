@@ -1,4 +1,5 @@
 from rest_framework import mixins, viewsets
+from rest_framework.permissions import IsAuthenticated
 
 from tasks.models import Task
 from tasks.serializers import TaskSerializer
@@ -13,3 +14,4 @@ class TaskViewSet(viewsets.GenericViewSet,
 
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    permission_classes = [IsAuthenticated]
