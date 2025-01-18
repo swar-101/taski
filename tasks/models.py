@@ -15,7 +15,6 @@ class Task(models.Model):
         ('C', 'Completed')
     ]
 
-
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     priority = models.CharField(max_length=1, choices=PRIORITY_CHOICES)
