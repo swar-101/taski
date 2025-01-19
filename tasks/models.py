@@ -1,7 +1,6 @@
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.db import models
 
-# Create your models here.
 class Task(models.Model):
     PRIORITY_CHOICES = [
         ('H', 'High'),
@@ -20,7 +19,7 @@ class Task(models.Model):
     priority = models.CharField(max_length=1, choices=PRIORITY_CHOICES)
     due_date = models.DateField()
     status = models.CharField(max_length=2, choices=STATUS_CHOICES)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
